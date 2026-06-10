@@ -1,4 +1,15 @@
-import { PrismaClient } from "@prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
+import { prisma } from "@/lib/prisma";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+export async function POST(req: Request) {
+  const body = await req.json();
+
+  const user = await prisma.user.create({
+    data: {
+      username: body.username,
+      email: body.email,
+      password: body.password,
+    },
+  });
+
+  return Response.json(user);
+}
