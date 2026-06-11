@@ -13,3 +13,9 @@ export async function POST(req: Request) {
 
   return Response.json(user);
 }
+
+export async function GET() {
+  const users = await prisma.user.findMany();
+
+  return Response.json(users);
+}
