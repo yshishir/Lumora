@@ -14,3 +14,20 @@ export async function GET(
 
   return Response.json(blog);
 }
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const { id } = await params;
+
+  await prisma.blog.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+
+  return Response.json({
+    message: "Blog Deleted",
+  });
+}
