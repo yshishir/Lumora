@@ -15,6 +15,7 @@ const Navbar = () => {
         <a
           href="https://github.com/wshishir/draftbit."
           className="cursor-pointer"
+          target="_blank"
         >
           <FaGithub className=" size-7" />
         </a>
