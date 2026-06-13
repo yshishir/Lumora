@@ -29,7 +29,7 @@ export async function DELETE(
   req: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  const user = await getUserFromToken(req);
+  const user = getUserFromToken(req);
 
   if (!user) {
     return Response.json({ message: "Unauthorized" }, { status: 404 });
