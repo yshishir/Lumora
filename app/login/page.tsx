@@ -19,7 +19,7 @@ const Login = () => {
           <CardHeader>
             <CardTitle className="text-xl">Login to your account</CardTitle>
             <CardDescription>
-              Enter your email below to login to you account
+              Enter your email below to login to your account
             </CardDescription>
           </CardHeader>
           <CardContent>
