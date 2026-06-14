@@ -5,9 +5,12 @@ import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="flex w-full items-center justify-between px-20 mt-5">
+    <div className="flex w-full items-center justify-between px-6 sm:px-20 mt-5">
       <div>
-        <Link href="/" className="font-semibold text-3xl cursor-pointer">
+        <Link
+          href="/"
+          className="font-semibold md:text-3xl text-2xl  cursor-pointer"
+        >
           Draftbit
         </Link>
       </div>
@@ -19,7 +22,7 @@ const Navbar = () => {
         >
           <FaGithub className=" size-7" />
         </a>
-        <Button className="h-10 px-5 text-sm font-medium text-[#2C3947] bg-transparent border-[#2C3947]/30 shadow-none hover:bg-[#2C3947]/5 hover:border-[#2C3947]/60 cursor-pointer">
+        <Button className="hidden md:block h-10 px-5 text-sm font-medium text-[#2C3947] bg-transparent border-[#2C3947]/30 shadow-none hover:bg-[#2C3947]/5 hover:border-[#2C3947]/60 cursor-pointer">
           Register
         </Button>
         <Button className="h-10 px-6 text-sm font-medium bg-[#2C3947] text-white shadow-sm hover:bg-[#2C3947]/90 cursor-pointer">
