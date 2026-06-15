@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const dmSans = DM_Sans({
+const font_Inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Draftbit",
+  title: "Lumora",
 };
 
 export default function RootLayout({
@@ -22,14 +22,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full",
-        "antialiased",
-        dmSans.variable,
-        "font-sans",
-      )}
+      className={cn("h-full", "antialiased", font_Inter.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col bg-[#E8EDF2]">
+      <body className="min-h-full flex flex-col">
         <Navbar />
 
         <main className="flex flex-1 flex-col">{children}</main>

@@ -9,9 +9,9 @@ const Navbar = () => {
       <div>
         <Link
           href="/"
-          className="font-semibold md:text-3xl text-2xl  cursor-pointer"
+          className="font-semibold md:text-3xl text-2xl  cursor-pointer text-[#FFFFFF]"
         >
-          Draftbit
+          Lumora
         </Link>
       </div>
       <div className="flex items-center gap-10">
