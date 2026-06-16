@@ -13,35 +13,35 @@ import { CiCalendar } from "react-icons/ci";
 
 const BlogCard = () => {
   return (
-    <div>
-      <Card className="group relative mx-auto w-full max-w-md pt-0 cursor-pointer">
-        <div className="aspect-video overflow-hidden">
+    <div className="w-full">
+      <Card className="group relative mx-auto min-h-full w-full max-w-md cursor-pointer gap-3 pt-0">
+        <div className="aspect-video overflow-hidden bg-muted">
           <Image
             src="/blog.jpg"
             width={400}
             height={400}
             alt="Blog Image"
-            className="h-full w-full object-fill transition-transform duration-300 ease-out group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           />
         </div>
-        <CardHeader>
-          <CardTitle className="text-[22px] font-semibold  text-[#111827] tracking-tighter">
+        <CardHeader className="gap-2">
+          <CardTitle className="text-xl font-semibold leading-tight text-foreground">
             How to Find a Baddie: A Totally Serious Guide
           </CardTitle>
-          <CardDescription className="font-light text-[15px] text-[#2C3947] tracking-tight">
+          <CardDescription className="line-clamp-3 text-[15px] leading-5 tracking-normal text-[#52525b]">
             A practical talk on component APIs, accessibility, and shipping
             faster. A practical talk on component APIs, accessibility, and
             shipping faster.
           </CardDescription>
         </CardHeader>
-        <CardFooter>
-          <div className="flex grid-cols-2 gap-2  items-center justify-center text-xs">
-            <div className="flex items-center justify-center gap-1.5">
-              <IoPersonOutline size={12} />
-              <p>Shishir</p>
+        <CardFooter className="mt-auto text-[#71717a]">
+          <div className="flex w-full items-center justify-between gap-3 text-[12px]">
+            <div className="flex items-center gap-1.5">
+              <IoPersonOutline size={14} />
+              <p>Rahul Pandey</p>
             </div>
-            <div className="flex items-center justify-center gap-1.5">
-              <CiCalendar  size={12}/>
+            <div className="flex items-center gap-1.5">
+              <CiCalendar size={14} />
               <p>June 15, 2026</p>
             </div>
           </div>
