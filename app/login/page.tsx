@@ -15,7 +15,7 @@ const Login = () => {
   return (
     <div className="flex flex-1 flex-col">
       <main className="flex flex-1 items-center justify-center px-4">
-        <Card className="w-full max-w-md">
+        <Card className="w-full max-w-md max-h-full">
           <CardHeader>
             <CardTitle className="text-xl">Login to your account</CardTitle>
             <CardDescription>
@@ -50,12 +50,12 @@ const Login = () => {
             </form>
           </CardContent>
           <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="w-full bg-[#2C3947] py-5 cursor-pointer hover:bg-[#2C3947]/90 text-lg">
+            <Button type="submit" className="w-full py-5 cursor-pointer text-lg bg-foreground">
               Login
             </Button>
-            <p className="text-center text-sm text-[#2C3947]/70">
+            <p className="text-center text-sm">
               Don&apos;t have an account?{" "}
-              <Link href="/register" className="font-medium text-[#2C3947] underline-offset-2 hover:underline">
+              <Link href="/register" className="font-medium underline-offset-2 hover:underline">
                 Register
               </Link>
             </p>

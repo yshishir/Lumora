@@ -1,7 +1,7 @@
-import React from "react";
 import { Button } from "./ui/button";
-import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -9,7 +9,7 @@ const Navbar = () => {
       <div>
         <Link
           href="/"
-          className="font-semibold md:text-3xl text-2xl  cursor-pointer text-[#FFFFFF]"
+          className="font-bold  text-2xl  cursor-pointer text-[#1A1C1E]"
         >
           Lumora
         </Link>
@@ -23,12 +23,12 @@ const Navbar = () => {
           <FaGithub className=" size-7" />
         </a>
         <Link href="/register">
-          <Button className="hidden md:block h-10 px-5 text-sm font-medium text-[#2C3947] bg-transparent border-[#2C3947]/30 shadow-none hover:bg-[#2C3947]/5 hover:border-[#2C3947]/60 cursor-pointer">
+          <Button className="hidden font-semibold md:block h-9 px-5 text-sm text-[#1A1C1E] bg-transparent border-[#1a1c1e]/30 shadow-none hover:bg-white/95 cursor-pointer">
             Register
           </Button>
         </Link>
         <Link href="/login">
-          <Button className="h-10 px-6 text-sm font-medium bg-[#2C3947] text-white shadow-sm hover:bg-[#2C3947]/90 cursor-pointer">
+          <Button className="h-9 px-5 text-sm font-semibold bg-[#1A1C1E] text-white  hover:bg-[#1A1C1E]/95 cursor-pointer border">
             Login
           </Button>
         </Link>
