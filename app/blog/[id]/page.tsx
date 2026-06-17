@@ -95,7 +95,7 @@ export default async function BlogPage({
   }
 
   return (
-    <article className="mx-auto w-full px-6 py-12 sm:px-8" style={{ maxWidth: "1090px" }}>
+    <article className="mx-auto w-full px-6 py-12 sm:px-8" style={{ maxWidth: "1000px" }}>
       <Link
         href="/"
         className="mb-8 inline-flex items-center gap-1.5 text-md font-medium text-black"
@@ -110,7 +110,7 @@ export default async function BlogPage({
           alt={blog.title}
           fill
           priority
-          sizes="(max-width: 1024px) 100vw, 1024px"
+          sizes="(max-width: 1024px) 100vw, 900px"
           className="object-cover"
         />
       </div>
@@ -136,7 +136,7 @@ export default async function BlogPage({
         </div>
       </header>
 
-      <div className="mt-10 space-y-6 text-lg leading-8 text-[#3f3f46]">
+      <div className="mt-8 space-y-6 text-lg leading-8 text-[#3f3f46]">
         <p>{blog.description}</p>
         <p>
           A good blog page starts by letting the reader understand the story at
