@@ -1,13 +1,19 @@
 import { Button } from "./ui/button";
 import { FaGithub } from "react-icons/fa";
+import { Playfair_Display } from "next/font/google";
 
 import Link from "next/link";
+
+const font_Playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["700"],
+});
 
 const Navbar = () => {
   return (
     <div className="flex w-full items-center justify-between px-6 sm:px-20 mt-5">
       <div>
-        <Link href="/" className="font-bold  text-2xl  cursor-pointer">
+        <Link href="/" className={`${font_Playfair.className} font-bold  text-2xl  cursor-pointer`}>
           Lumora
         </Link>
       </div>
