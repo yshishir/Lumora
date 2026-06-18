@@ -112,7 +112,7 @@ const Page = () => {
               <img
                 src={previewImage}
                 alt="Cover preview"
-                className="h-full w-full object-cover hover:blur-md"
+                className="h-full w-full object-cover"
               />
               <button
                 type="button"
