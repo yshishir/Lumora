@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,9 +11,51 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { saveAuth } from "@/lib/client-auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.get("username"),
+          email: formData.get("email"),
+          password: formData.get("password"),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      saveAuth(data.token, data.user);
+      toast.success("Account created");
+      router.push("/");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Registration failed");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className="flex flex-1 flex-col">
       <main className="flex flex-1 items-center justify-center px-4">
@@ -22,22 +66,24 @@ const Register = () => {
               Enter your email below to create a new account
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <form>
+          <form onSubmit={handleSubmit}>
+            <CardContent>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                  <Label>Username</Label>
+                  <Label htmlFor="username">Username</Label>
                   <Input
-                  id="name"
-                  type="name"
-                  placeholder="John Pork"
-                  required
+                    id="username"
+                    name="username"
+                    type="text"
+                    placeholder="John Pork"
+                    required
                   />
                 </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email-spacing">Email</Label>
                   <Input
                     id="email-spacing"
+                    name="email"
                     type="email"
                     placeholder="m@example.com"
                     required
@@ -47,22 +93,34 @@ const Register = () => {
                   <div className="flex items-center">
                     <Label htmlFor="password-spacing">Password</Label>
                   </div>
-                  <Input id="password-spacing" type="password" required />
+                  <Input
+                    id="password-spacing"
+                    name="password"
+                    type="password"
+                    required
+                  />
                 </div>
               </div>
-            </form>
-          </CardContent>
-          <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="w-full py-5 cursor-pointer text-lg bg-foreground">
-             Register
-            </Button>
-            <p className="text-center text-sm">
-            Already have an account?{" "}
-              <Link href="/login" className="font-medium underline-offset-2 hover:underline">
-                Login
-              </Link>
-            </p>
-          </CardFooter>
+            </CardContent>
+            <CardFooter className="flex-col gap-2">
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-5 cursor-pointer text-lg bg-foreground"
+              >
+                {isLoading ? "Registering..." : "Register"}
+              </Button>
+              <p className="text-center text-sm">
+                Already have an account?{" "}
+                <Link
+                  href="/login"
+                  className="font-medium underline-offset-2 hover:underline"
+                >
+                  Login
+                </Link>
+              </p>
+            </CardFooter>
+          </form>
         </Card>
       </main>
     </div>
