@@ -106,7 +106,7 @@ const Register = () => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-5 cursor-pointer text-lg bg-foreground"
+                className="w-full py-5 cursor-pointer text-lg bg-foreground mt-5"
               >
                 {isLoading ? "Registering..." : "Register"}
               </Button>

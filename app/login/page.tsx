@@ -101,9 +101,9 @@ const Login = () => {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-5 cursor-pointer text-lg bg-foreground"
+                className="w-full py-5 cursor-pointer text-lg bg-foreground mt-3"
               >
-                {isLoading ? "Logging in..." : "Login"}
+                {isLoading ? "Logging in.." : "Login"}
               </Button>
               <p className="text-center text-sm">
                 Don&apos;t have an account?{" "}

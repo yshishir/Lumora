@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { Playfair_Display } from "next/font/google";
 import { getUser, logout } from "@/lib/client-auth";
 import { usePathname, useRouter } from "next/navigation";
+import { TbBallpen } from "react-icons/tb";
 
 import Link from "next/link";
 
@@ -44,15 +45,16 @@ const Navbar = () => {
             <Link href="/create">
               <Button
                 variant="secondary"
-                className="hidden font-semibold md:block h-9 px-5 text-foreground text-sm bg-zinc-200  shadow-none hover:bg-zinc-300 cursor-pointer"
+                className="font-semibold flex items-center gap-1.5 h-9 px-5 text-foreground text-sm bg-zinc-200  shadow-none hover:bg-zinc-300 cursor-pointer"
               >
+                <TbBallpen className="size-4" aria-hidden="true" />
                 Write
               </Button>
             </Link>
 
             <Button
               onClick={handleLogout}
-              className="h-9 px-5 text-sm font-semibold  hover:bg-[#1A1C1E]/95 cursor-pointer border"
+              className=" hidden md:block h-9 px-5 text-sm font-semibold  bg-red-200 text-red-500 hover:bg-red-100 cursor-pointer border"
             >
               Logout
             </Button>
