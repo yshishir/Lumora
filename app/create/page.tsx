@@ -11,9 +11,6 @@ import toast from "react-hot-toast";
 import { FaFileImage, FaLocationArrow } from "react-icons/fa";
 import { LuArrowLeft, LuX } from "react-icons/lu";
 
-const handleSubmit = () => {
-  toast.success("Posted Successfully");
-};
 
 const Page = () => {
   const router = useRouter();
@@ -25,30 +22,40 @@ const Page = () => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   async function handleCreateBlog(e: React.FormEvent<HTMLFormElement>) {
-    const token = getToken();
-    const res = await fetch("/api/blogs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        title,
-        description,
-        content,
-        coverImage,
-      }),
-    });
-    const data = await res.json();
-
-    if (!res.ok) {
-      setError(data.message || "Failed to create blog");
+    e.preventDefault();
+    if (!coverImage) {
+      toast.error("Cover image is required");
       return;
     }
-    router.push("/");
+
+    setLoading(true);
+    const token = getToken();
+    try {
+      const res = await fetch("/api/blogs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          content,
+          thumbnail: coverImage,
+        }),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message || "Failed to create blog");
+        return;
+      }
+      router.push("/");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const handleImageChange = async (
@@ -184,7 +191,7 @@ const Page = () => {
             onChange={handleImageChange}
           />
         </label>
-        <input type="hidden" name="coverImage" value={coverImage} />
+        <input type="hidden" name="thumbnail" value={coverImage} />
       </div>
       <div className="mb-5">
         <p className="font-medium text-xl mb-1">Content</p>
@@ -194,9 +201,8 @@ const Page = () => {
         <Button
           variant="default"
           className="h-11 px-6 cursor-pointer gap-2 bg-foreground text-base font-semibold shadow-sm hover:bg-foreground/90"
-          onClick={handleSubmit}
           type="submit"
-          disabled={loading}
+          disabled={loading || isUploading}
         >
           {loading ? "Publishing..." : "Publish Blog"}
           <FaLocationArrow size={4} />

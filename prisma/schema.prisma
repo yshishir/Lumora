@@ -22,6 +22,6 @@ model Blog {
   content   String
   userId    Int
   createdAt DateTime @default(now())
-  thumbnail String?
+  thumbnail String
   author      User     @relation(fields: [userId], references: [id])
 }

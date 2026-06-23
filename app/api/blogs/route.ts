@@ -10,10 +10,14 @@ export async function POST(req: Request) {
 
   const body = await req.json();
 
+  if (!body.thumbnail) {
+    return Response.json({ message: "Thumbnail is required" }, { status: 400 });
+  }
+
   const blog = await prisma.blog.create({
     data: {
       title: body.title,
-      description:body.description,
+      description: body.description,
       content: body.content,
       userId: user.id,
       thumbnail: body.thumbnail,
