@@ -6,6 +6,7 @@ import { CiCalendar } from "react-icons/ci";
 import { LuArrowLeft, LuUser } from "react-icons/lu";
 import { prisma } from "@/lib/prisma";
 import ShareButton from "./ShareButton";
+import DeleteBlogButton from "@/components/DeleteButton";
 
 async function getBlog(id: string) {
   await connection();
@@ -44,6 +45,7 @@ export default async function BlogPage({
     notFound();
   }
 
+
   return (
     <article
       className="mx-auto w-full px-6 py-12 sm:px-8"
@@ -73,7 +75,7 @@ export default async function BlogPage({
           {blog.title}
         </h1>
 
-        <div className="mt-5 flex w-full flex-col gap-6 text-sm text-zinc-500 sm:flex-row sm:items-center">
+        <div className="mt-5 flex w-full flex-col text-sm text-zinc-500 sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center gap-3">
             <p className="flex items-center gap-1">
               <LuUser className="size-4" />
@@ -88,8 +90,11 @@ export default async function BlogPage({
               })}
             </p>
           </div>
+          <div className="ml-auto flex items-center gap-2">
+            <DeleteBlogButton blogId={blog.id} blogUserId={blog.userId} />
 
-          <ShareButton />
+            <ShareButton />
+          </div>
         </div>
       </header>
 
