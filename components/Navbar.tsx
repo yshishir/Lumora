@@ -45,7 +45,7 @@ const Navbar = () => {
 
       <div className="flex items-center gap-10">
         <a
-          href="https://github.com/wshishir/Lumora"
+          href="https://github.com/yshishir/Lumora"
           className="cursor-pointer"
           target="_blank"
           rel="noopener noreferrer"
